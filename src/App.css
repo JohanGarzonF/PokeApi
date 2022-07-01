@@ -1,0 +1,96 @@
+* {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.mg-botton {
+  margin-bottom: 20px;
+}
+.text-white {
+  color: #fff;
+}
+.home-screen {
+  background-image: url('./storage/img/forest.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+.home-screen-card {
+  background-color: #000000d0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 400px;
+  aspect-ratio: 1;
+  border-radius: 20px;
+}
+.home-screen-container-img{
+  width: 100%;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.home-screen-img {
+  width: 80%;
+}
+.home-screen-title {
+  color: #d3cece;
+}
+.input-home {
+  padding: 5px 10px;
+  border: none;
+}
+.btn-home {
+  padding: 5px 10px;
+  border: none;
+  background-color: #fe1937;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.card-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.poke-card {
+  position: relative;
+  background-color: #d3cece;
+  width: 270px;
+  height: 380px;
+  text-align: center;
+  border-radius: 20px;
+  border: solid 8px #22c2bf;
+}
+.poke-card-color {
+  background: linear-gradient(#7EC6C5 100%,#ABDAC6 100%);
+  position: relative;
+  height: 35%;
+  border-radius:  10px 10px 0 0;
+  margin-bottom: 25%;
+}
+.poke-card-img {
+  width: 75%;
+  position: relative;
+}
+.poke-card-info {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  text-align: left;
+}
+.poke-card-info-titles{
+  font-size: 14px;
+  color: #424242;
+}
