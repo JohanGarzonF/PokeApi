@@ -7,7 +7,7 @@ const usePokeApi = (changeType) => {
   
   useEffect(() => {
     if(changeType === 'All Pokemons'){
-      const URL_POKEMON = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100'
+      const URL_POKEMON = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1154'
       axios.get(URL_POKEMON)
         .then(res => setPokemons(res.data.results))
         .catch(err => console.log(hola))
