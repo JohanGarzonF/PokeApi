@@ -1,8 +1,10 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { Navigate, Outlet, useNavigate } from 'react-router-dom'
 import usePokeApi from '../../hooks/usePokeApi'
 import Form from './Form'
+import Header from './Header'
 import PokeCard from './PokeCard'
 
 const pokedexScreen = () => {
@@ -30,15 +32,17 @@ const pokedexScreen = () => {
       .catch(err => console.log(err))
   },[])
 
+
   return (
-    <div>
-      <h2>Hi {nameUser}, welcome to Pokedex</h2>
-      <Form 
+    <div className='screen_container'>
+      <Header/>
+      <h2 className='container title-to-welcome mg-botton'><span>Hi {nameUser},</span> welcome to Pokedex</h2>
+      <Form
         setPokeSearch={setPokeSearch}
         typeList={typeList}
         setChangeType={setChangeType}
       />
-      <div className="card-container">
+      <div className="card-container container">
         {
           filterPokemon ?
             filterPokemon?.map(pokemon => (

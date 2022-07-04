@@ -10,17 +10,18 @@ const Form = ({setPokeSearch, typeList, setChangeType}) => {
   }
 
   return (
-    <form>
+    <form className='container mg-botton form'>
       <input 
+        className='input-select'
         type="text" 
         placeholder='Search your favorite Pokemon'
         onChange={changeInputText}
       />
-      <select onChange={changeTypePokemon}>
-        <option value={'All Pokemons'}>All Pokemons</option>
+      <select onChange={changeTypePokemon} className='input-select select'>
+        <option classname='op' value={'All Pokemons'}>All Pokemons</option>
         {
           typeList?.map(type => (
-            <option 
+            <option
               key={type.name} 
               value={type.name}
             >{type.name}</option>
