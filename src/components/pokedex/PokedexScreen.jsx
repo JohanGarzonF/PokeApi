@@ -1,8 +1,9 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Navigate, Outlet, useNavigate } from 'react-router-dom'
 import usePokeApi from '../../hooks/usePokeApi'
+import Loading from '../Login/Loading'
+import Pagination from '../Pagination/Pagination'
 import Form from './Form'
 import Header from './Header'
 import PokeCard from './PokeCard'
@@ -16,13 +17,24 @@ const pokedexScreen = () => {
   const [typeList, setTypeList] = useState()
   const [changeType, setChangeType] = useState('All Pokemons')
   const pokemons = usePokeApi(changeType)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postPerPage, setPostPerPage] = useState(9)
+   
+
+  //Get current post
+  const indexOfLastPost = currentPage * postPerPage
+  const indexOfFirstPost = indexOfLastPost - postPerPage
+  const currentPost = pokemons?.slice(indexOfFirstPost, indexOfLastPost)
+  const currentPostFilter = filterPokemon?.slice(indexOfFirstPost, indexOfLastPost)
+
 
 
   useEffect(() => {
-    if(pokeSearch) {
+    if (pokeSearch) {
       setFilterPokemon(pokemons?.filter(poke => poke.name.includes(pokeSearch.toLowerCase())))
     }
   }, [pokeSearch])
+
 
 
   useEffect(() => {
@@ -30,36 +42,57 @@ const pokedexScreen = () => {
     axios.get(URL)
       .then(res => setTypeList(res.data.results))
       .catch(err => console.log(err))
-  },[])
+  }, [])
 
+  const isLoading = useSelector(state => state.isLoading)
 
   return (
     <div className='screen_container'>
-      <Header/>
-      <h2 className='container title-to-welcome mg-botton'><span>Hi {nameUser},</span> welcome to Pokedex</h2>
-      <Form
-        setPokeSearch={setPokeSearch}
-        typeList={typeList}
-        setChangeType={setChangeType}
+      <Header />
+      {
+        isLoading ?
+          <Loading/>
+        :
+        <>
+          <h2 className='container title-to-welcome mg-botton'><span>Hi {nameUser},</span> welcome to Pokedex</h2>
+          <Form
+            setPokeSearch={setPokeSearch}
+            typeList={typeList}
+            setChangeType={setChangeType}
+            setPostPerPage={setPostPerPage}
+          />
+          <Pagination 
+            postPerPage={postPerPage} 
+            totalPost={filterPokemon ? filterPokemon?.length : pokemons?.length}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+          />
+          <div className="card-container container">
+            {
+              filterPokemon ?
+                currentPostFilter?.map(pokemon => (
+                  <PokeCard
+                    key={pokemon.url}
+                    url={pokemon.url}
+                  />
+                ))
+                :
+                currentPost?.map(pokemon => (
+                  <PokeCard
+                    key={pokemon.url}
+                    url={pokemon.url}
+                  />
+                ))
+            }
+          </div>
+        </>
+      }
+      <Pagination 
+        postPerPage={postPerPage} 
+        totalPost={filterPokemon ? filterPokemon?.length : pokemons?.length}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
       />
-      <div className="card-container container">
-        {
-          filterPokemon ?
-            filterPokemon?.map(pokemon => (
-              <PokeCard
-                key={pokemon.url}
-                url={pokemon.url}
-              />
-            ))
-          :
-            pokemons?.map(pokemon => (
-              <PokeCard
-                key={pokemon.url}
-                url={pokemon.url}
-              />
-            ))
-        }
-      </div>
     </div>
   )
 }
