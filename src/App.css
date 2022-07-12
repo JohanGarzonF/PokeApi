@@ -122,6 +122,7 @@ ul {
 /*================= form =================*/
 .form {
   display: flex;
+  justify-content: center;
 }
 .form input {
   width: 250px;
