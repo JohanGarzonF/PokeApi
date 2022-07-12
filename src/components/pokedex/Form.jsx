@@ -1,6 +1,6 @@
 import React from 'react'
 
-const numbers = [12, 18, 33]
+const numbers = [9, 12, 18, 33]
 
 const Form = ({setPokeSearch, typeList, setChangeType, setPostPerPage}) => {
 
@@ -22,28 +22,30 @@ const Form = ({setPokeSearch, typeList, setChangeType, setPostPerPage}) => {
         placeholder='Search your favorite Pokemon'
         onChange={changeInputText}
       />
-      <select onChange={changeTypePokemon} className='input-select select'>
-        <option className='op' value={'All Pokemons'}>All Pokemons</option>
-        {
-          typeList?.map(type => (
-            <option
-              key={type.name} 
-              value={type.name}
-            >{type.name}</option>
-          ))
-        }
-      </select>
-      <select onChange={changePostPerPage} className='input-select select'>
-        <option className='op' value={'9'}>9</option>
-        {
-          numbers.map(num => (
-            <option
-              key={num} 
-              value={num}
-            >{num}</option>
-          ))
-        }
-      </select>
+      <div className='form__selector-container'>
+        <select onChange={changeTypePokemon} className='input-select select'>
+          <option className='op' value={'All Pokemons'}>All Pokemons</option>
+          {
+            typeList?.map(type => (
+              <option
+                key={type.name} 
+                value={type.name}
+              >{type.name}</option>
+            ))
+          }
+        </select>
+        <select onChange={changePostPerPage} className='input-select select'>
+          <option className='op' value={'9'}>Pokes per page</option>
+          {
+            numbers.map(num => (
+              <option
+                key={num} 
+                value={num}
+              >{num}</option>
+            ))
+          }
+        </select>
+      </div>
     </form>
   )
 }

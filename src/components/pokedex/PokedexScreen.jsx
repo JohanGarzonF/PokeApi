@@ -47,13 +47,13 @@ const pokedexScreen = () => {
   const isLoading = useSelector(state => state.isLoading)
 
   return (
-    <div className='screen_container'>
+    <div className='screen_container img__pokedex'>
       <Header />
       {
         isLoading ?
           <Loading/>
         :
-        <>
+        <div className='pricipal-container'>
           <h2 className='container title-to-welcome mg-botton'><span>Hi {nameUser},</span> welcome to Pokedex</h2>
           <Form
             setPokeSearch={setPokeSearch}
@@ -85,14 +85,14 @@ const pokedexScreen = () => {
                 ))
             }
           </div>
-        </>
+          <Pagination 
+            postPerPage={postPerPage} 
+            totalPost={filterPokemon ? filterPokemon?.length : pokemons?.length}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+          />
+        </div>
       }
-      <Pagination 
-        postPerPage={postPerPage} 
-        totalPost={filterPokemon ? filterPokemon?.length : pokemons?.length}
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
-      />
     </div>
   )
 }

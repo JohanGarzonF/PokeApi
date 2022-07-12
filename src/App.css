@@ -65,10 +65,33 @@ ul {
   font-weight: 700;
   cursor: pointer;
 }
+/*================= pokedex Screen =================*/
+.pricipal-container {
+  padding-bottom: 1px;
+}
+.img__pokedex {
+  min-height: 100em;
+  background-image: url('./storage/img/wild.png');
+  z-index: -1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.img-pokedex__id {
+  min-height: 100vh;
+  background-image: url('./storage/img/background.jpg');
+  padding-bottom: 10px;
+  z-index: -1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
 /*================= Container Card =================*/
 .title-to-welcome {
+  color: #000;
   font-size: 20px;
-  font-weight: 600;
 }
 .title-to-welcome span {
   color: #fe1937;
@@ -99,11 +122,13 @@ ul {
 /*================= form =================*/
 .form {
   display: flex;
-  justify-content: center;
 }
 .form input {
   width: 250px;
   border: solid #fe1937;
+}
+.form__selector-container {
+  display: flex;
 }
 .input-select {
   padding: 5px 10px;
@@ -178,13 +203,14 @@ ul {
 .poke-info{
   position: relative;
   width: 100%;
-  margin-top: 200px;
+  margin-top: 150px;
   text-align: center;
 }
 .poke-container {
+  color: #fff;
+  background-color: #000000a7;
   position: relative;
   width: 90%;
-  box-shadow: 1px 1px 10px #000000d0;
   padding: 5px;
   margin: auto auto;
 }
@@ -218,6 +244,8 @@ ul {
   margin: 5px 10px;
   padding: 5px 10px;
   border-radius: 10px;
+  background-color: #dadada;
+  color: #424242;
 }
 .poke-info-list-container {
   margin: 20px auto;
@@ -245,17 +273,21 @@ ul {
   border-radius: 10px;
 }
 
-@media (max-width: 548px) {
+@media (max-width: 576px) {
   .home-screen-card {
     width: 90%;
     text-align: center;
   }
   .poke-container{
-    width: 98%;
+    width: 100%;
+  }
+  .poke-info {
+    position: relative;
+    margin-top: 50px;
   }
   .poke-info img{
-    width: 250px;
-    top: -100px;
+    width: 200px;
+    top: -10px; 
   }
   .poke-info-abilities {
     flex-direction: column;
@@ -264,8 +296,27 @@ ul {
   .input-home {
     width: 50%;
   }
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+  }
   .form input {
-    width: 50%;
+    margin-left: 5px;
+    width: 100%;
+    max-width: 250px;
+  }
+  .form__selector-container {
+    width: 100%;
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .input-select {
+    width: 100%;
   }
 }
 /*================= PokeCard color =================*/
@@ -318,7 +369,7 @@ ul {
 
 .bg-grass {
   background: linear-gradient(178.92deg, #7EC6C5 0.92%, #ABDAC6 47.96%, #CAE099 99.08%);
-  color: #fff;
+  color: #000;
 }
 
 .bg-electric {

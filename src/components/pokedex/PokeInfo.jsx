@@ -31,7 +31,7 @@ const PokeInfo = () => {
   const isLoading = useSelector(state => state.isLoading)
 
   return (
-    <div>
+    <div className='img-pokedex__id'>
       <Header />
       {
         isLoading ?
@@ -74,7 +74,9 @@ const PokeInfo = () => {
                 <ul className='poke-info-list-move-ul'>
                   {
                     pokemon?.moves.map(move => (
-                      <li key={move.move.url}>{move.move.name}</li>
+                      <li
+                        key={move.move.url}
+                      >{move.move.name}</li>
                     ))
                   }
                 </ul>
