@@ -7,9 +7,10 @@ import { setIsLoadingGlobal } from "../store/slices/IsLoading.slice"
 const usePokeApi = (changeType) => {
   const [pokemons, setPokemons] = useState()
 
+
   const dispatch = useDispatch()
   
-  useEffect( () => {
+  useEffect(() => {
     if(changeType === 'All Pokemons'){
       const URL_POKEMON = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1154'
       dispatch(setIsLoadingGlobal(true))

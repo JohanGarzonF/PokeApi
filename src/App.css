@@ -70,13 +70,14 @@ ul {
   padding-bottom: 1px;
 }
 .img__pokedex {
-  min-height: 100em;
+  min-height: 100vh;
   background-image: url('./storage/img/wild.png');
   z-index: -1;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  padding-bottom: 10px;
 }
 .img-pokedex__id {
   min-height: 100vh;
