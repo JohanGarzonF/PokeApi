@@ -30,7 +30,9 @@ const pokedexScreen = () => {
 
 
   useEffect(() => {
-    if (pokeSearch) {
+    if (pokeSearch === '') {
+      setFilterPokemon(null)
+    } else {
       setFilterPokemon(pokemons?.filter(poke => poke.name.includes(pokeSearch.toLowerCase())))
     }
   }, [pokeSearch])
